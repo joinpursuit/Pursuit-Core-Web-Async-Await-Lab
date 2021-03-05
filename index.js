@@ -11,24 +11,17 @@ for (let i = 1; i <= 10; i += 1) {
 
 counter.selectedIndex = 4;
 
-async function getFetchJson(route) {
-  const response = await fetch(route);
-
-  return await response.json();
-}
 
 async function main() {
-  const { deck_id: deckId } = await getFetchJson(
-    "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
-  );
+  const newDeckResponse = await axios("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
+  const deckId = newDeckResponse.data.deck_id;
 
   button.addEventListener("click", drawCards);
 
   async function drawCards() {
     const count = counter.value;
-    const { cards } = await getFetchJson(
-      `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}`
-    );
+    const drawCardsResponse = await axios(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}`);
+    const { cards } = drawCardsResponse.data;
 
     cardsList.innerHTML = "";
 
