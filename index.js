@@ -2,6 +2,7 @@ const button = document.querySelector("button");
 const counter = document.querySelector("select");
 const cardsList = document.getElementById("cards-list");
 
+// It'd be fine to put these in the HTML too. We just didn't want to copy & paste so much 😉
 for (let i = 1; i <= 10; i += 1) {
   const option = document.createElement("option");
   option.text = i;
