@@ -8,11 +8,9 @@ const clickForDeck = (fixture, count = 5) => {
 const visitWithFirstDeck = () => {
   cy.intercept("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1", {
     deck_id: deckId,
-  }).as("newDeck");
+  });
 
   cy.visit("./index.html");
-  cy.wait("@newDeck");
-  cy.wait(5000);
 
   clickForDeck("cards1.json");
 };
@@ -21,6 +19,11 @@ describe("Index", () => {
   it("starts the select with a default value of 5", () => {
     cy.visit("./index.html");
     cy.get("select").should("have.value", 5);
+  });
+
+  it("starts the deck out with 52 card(s) left", () => {
+    cy.visit("./index.html");
+    cy.get("#remaining").should("have.text", "52 card(s) left.");
   });
 
   it("shows five cards from the retrieved deck ID when the button is clicked", () => {
@@ -33,6 +36,8 @@ describe("Index", () => {
           cy.wrap(card).should("have.attr", "src", cardsFixture1.cards[index].image);
         });
     });
+
+    cy.get("#remaining").should("have.text", "47 card(s) left.");
   });
 
   it("fetches new cards when the button is clicked again with a different count", () => {
@@ -47,5 +52,7 @@ describe("Index", () => {
         cy.wrap(card).should("have.attr", "src", cardsFixture2.cards[index].image);
       });
     });
+
+    cy.get("#remaining").should("have.text", "44 card(s) left.");
   });
 });
