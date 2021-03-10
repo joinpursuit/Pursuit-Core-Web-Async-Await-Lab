@@ -12,6 +12,7 @@ const visitWithFirstDeck = () => {
 
   cy.visit("./index.html");
   cy.wait("@newDeck");
+  cy.wait(5000);
 
   clickForDeck("cards1.json");
 };
