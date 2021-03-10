@@ -10,15 +10,16 @@ const visitWithFirstDeck = () => {
     deck_id: deckId,
   });
 
-  cy.visit("./index.html");
+  cy.visit("./index_bonus.html");
 
   clickForDeck("cards1.json");
 };
 
 describe("Index", () => {
-  it("starts the select with a default value of 5", () => {
-    cy.visit("./index.html");
+  it("starts the select with a default value of 5 and 52 card(s) left", () => {
+    cy.visit("./index_bonus.html");
     cy.get("select").should("have.value", 5);
+    cy.get("#remaining").should("have.text", "52 card(s) left.");
   });
 
   it("shows five cards from the retrieved deck ID when the button is clicked", () => {
@@ -32,6 +33,7 @@ describe("Index", () => {
         });
     });
 
+    cy.get("#remaining").should("have.text", "47 card(s) left.");
   });
 
   it("fetches new cards when the button is clicked again with a different count", () => {
@@ -47,5 +49,6 @@ describe("Index", () => {
       });
     });
 
+    cy.get("#remaining").should("have.text", "44 card(s) left.");
   });
 });

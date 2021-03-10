@@ -1,6 +1,7 @@
 const button = document.querySelector("button");
 const counter = document.querySelector("select");
 const cardsList = document.getElementById("cards-list");
+const remainingIndicator = document.getElementById("remaining");
 
 // It'd be fine to put these in the HTML too. We just didn't want to copy & paste so much 😉
 for (let i = 1; i <= 10; i += 1) {
@@ -16,16 +17,18 @@ async function main() {
   const newDeckResponse = await axios(
     "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
   );
-  const deckId = newDeckResponse.data.deck_id;
+  const { deck_id: deckId, remaining } = newDeckResponse.data;
 
   button.addEventListener("click", drawCards);
+
+  remainingIndicator.textContent = `${remaining} card(s) left.`;
 
   async function drawCards() {
     const count = counter.value;
     const drawCardsResponse = await axios(
       `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}`
     );
-    const { cards } = drawCardsResponse.data;
+    const { cards, remaining } = drawCardsResponse.data;
 
     cardsList.innerHTML = "";
 
@@ -35,6 +38,8 @@ async function main() {
       cardImage.src = card.image;
       cardsList.appendChild(cardImage);
     }
+
+    remainingIndicator.textContent = `${remaining} card(s) left.`;
   }
 }
 
