@@ -68,16 +68,16 @@ Create `img` tags for each of them, give each a class of `.card`, set each `src`
 
 Just like our Dog API project, when you click the button again, it should remove/replace each card with a new card.
 
+### Remaining Cards Indicator
+
+Add a `p` with ID `"#remaining"` below the cards that says _`N card(s) left`_, where `N` is the `remaining` property returned to you by the API.
+Whenever the API is called for new card(s), update this paragraph's text content accordingly.
+
 ### Drawing More or Fewer Cards
 
 Create a `select` tag underneath your `button`.
 Your `select` tag should be filled with numbers from 1 through 10.
 Give it a default value of 5 to start.
-
-### Remainders
-
-Add a `p` with ID `"#remaining"` below the cards that says _`N card(s) left`_, where `N` is the `remaining` property returned to you by the API.
-Whenever the API is called to draw new cards, update the text of this paragraph accordingly.
 
 ### Styling
 
@@ -99,3 +99,8 @@ Note that these tests use [Cypress fixtures](https://docs.cypress.io/api/command
 You can find the JSON fixtures used for network responses under `cypress/fixtures`.
 
 > Tip: see how the data stored in those `.json` files corresponds to what's used in tests.
+
+## Bonus: Single Card Replacements
+
+Add a `"click"` event listener so that whenever a card image is clicked, the API is called to draw a single card.
+Replace the `src` of the clicked card image with the single drawn card's image. 

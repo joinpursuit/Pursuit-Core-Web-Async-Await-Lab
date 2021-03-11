@@ -1,0 +1,17 @@
+body {
+  background: green;
+}
+
+#cards-list {
+  background: darkgreen;
+}
+
+.card {
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 300ms;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
