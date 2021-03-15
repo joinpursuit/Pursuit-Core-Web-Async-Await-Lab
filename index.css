@@ -1,0 +1,15 @@
+body {
+  background: green;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-shrink: 2;
+  background: rgb(6, 43, 6);
+}
+
+image {
+  align-self: center;
+}
