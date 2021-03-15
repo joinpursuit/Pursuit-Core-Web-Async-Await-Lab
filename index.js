@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', eve => {
                        
                         let cardsImages = document.querySelector('div')
                         if(opt.value >5){
-                            cardsImages.setAttribute('style','height: 644px')
+                            cardsImages.setAttribute('style','height: 668px')
                         }else{
-                            cardsImages.setAttribute('style','height: 320px')
+                            cardsImages.setAttribute('style','height: 340px')
                         }
 
                         cardsImages.innerHTML = ''
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', eve => {
                             for (let i = 0; i <= opt.value - 1; i++) {
                                 let image = document.createElement('img')
                                 image.setAttribute('class', 'card')
-                                image.setAttribute('style','padding: 4px')
+                                image.setAttribute('style','padding: 10px')
                                 cardsImages.appendChild(image)
                                 image.src = cardsLoaded.data.cards[i].image
                             }

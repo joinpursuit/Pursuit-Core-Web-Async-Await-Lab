@@ -13,3 +13,7 @@ div {
 image {
   align-self: wrap;
 }
+
+.card:hover{
+    transform: scale(1.1)
+}
