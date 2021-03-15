@@ -94,7 +94,7 @@ The [Deck of Cards API documentation](https://deckofcardsapi.com/) will tell you
 ### Rendering Cards to the DOM
 
 When we click, we should see the images of five cards, in a row, underneath our button. 
-**Give each button a class of `.card`**
+**Give each element a class of `.card`**
 > _Note_: The Cypress tests will be looking for the `.card` class to find the cards. **The tests won't pass unless you use the `.card` class name.**
 
 <details>
