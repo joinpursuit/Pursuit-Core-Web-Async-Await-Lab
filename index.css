@@ -4,12 +4,12 @@ body {
 
 div {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: space-around;
   flex-shrink: 2;
   background: rgb(6, 43, 6);
 }
 
 image {
-  align-self: center;
+  align-self: wrap;
 }

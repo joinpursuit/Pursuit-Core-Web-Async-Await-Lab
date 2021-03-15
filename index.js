@@ -33,15 +33,25 @@ document.addEventListener('DOMContentLoaded', eve => {
                         let remainingDeck = document.getElementById('remaining')
                         remainingDeck.textContent = `${cardsRemaining} card(s) left.`
 
+                       
                         let cardsImages = document.querySelector('div')
+                        if(opt.value >5){
+                            cardsImages.setAttribute('style','height: 644px')
+                        }else{
+                            cardsImages.setAttribute('style','height: 320px')
+                        }
+
                         cardsImages.innerHTML = ''
 
                             for (let i = 0; i <= opt.value - 1; i++) {
                                 let image = document.createElement('img')
                                 image.setAttribute('class', 'card')
+                                image.setAttribute('style','padding: 4px')
                                 cardsImages.appendChild(image)
                                 image.src = cardsLoaded.data.cards[i].image
                             }
+                       
+    
                 }
                 draw()
             })
