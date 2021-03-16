@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     async function drawCards() {
+      showDeck.textContent = ""
       const cardsNumber = document.querySelector("#cardsnumber").value;
       let myDeck = await axios.get(
         "https://deckofcardsapi.com/api/deck/" +
@@ -28,11 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const cards = myDeck.data.cards;
 
       for (let card of cards) {
+      
         const cardImage = document.createElement("img");
         cardImage.className = "card";
         cardImage.src = card.image;
-        console.log(cardImage);
-        showDeck.appendChild(cardImage);
+        showDeck.appendChild(cardImage)
 
         cardImage.addEventListener("click", (e) => replaceCard());
 

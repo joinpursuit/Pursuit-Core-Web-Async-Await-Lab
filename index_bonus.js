@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     async function drawCards() {
+      showDeck.textContent = ""
       const cardsNumber = document.querySelector("#cardsnumber").value;
       let myDeck = await axios.get(
         "https://deckofcardsapi.com/api/deck/" +
