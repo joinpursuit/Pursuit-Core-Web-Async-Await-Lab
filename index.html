@@ -3,8 +3,12 @@
     <title>Async Await Lab</title>
 </head>
 <body>
-    <h1>Hello World</h1>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="index.js" defer></script>
+    <select>   
+        <option disabled selected>Choose Number of Cards!</option>
+    </select>
+    <button id="cardSubmitButton" type="click">Get Cards!</button>  
+    <section id="card-display-section"></section>
 </body>
 </html>

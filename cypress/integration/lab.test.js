@@ -1,14 +1,20 @@
 const deckId = "my-deck-id";
 
 const clickForDeck = (fixture, count = 5) => {
-  cy.intercept(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}`, { fixture });
+  cy.intercept(
+    `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${count}`,
+    { fixture }
+  );
   cy.get("button").click();
 };
 
 const visitWithFirstDeck = () => {
-  cy.intercept("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1", {
-    deck_id: deckId,
-  });
+  cy.intercept(
+    "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
+    {
+      deck_id: deckId,
+    }
+  );
 
   cy.visit("./index.html");
 
@@ -24,11 +30,17 @@ describe("Index", () => {
   it("shows five cards from the retrieved deck ID when the button is clicked", () => {
     visitWithFirstDeck();
 
+    clickForDeck("cards1.json");
+
     cy.fixture("cards1.json").then((cardsFixture1) => {
       cy.get(".card")
         .should("have.length", 5)
         .each((card, index) => {
-          cy.wrap(card).should("have.attr", "src", cardsFixture1.cards[index].image);
+          cy.wrap(card).should(
+            "have.attr",
+            "src",
+            cardsFixture1.cards[index].image
+          );
         });
     });
 
@@ -44,7 +56,11 @@ describe("Index", () => {
 
     cy.fixture("cards2.json").then((cardsFixture2) => {
       cy.get(".card").each((card, index) => {
-        cy.wrap(card).should("have.attr", "src", cardsFixture2.cards[index].image);
+        cy.wrap(card).should(
+          "have.attr",
+          "src",
+          cardsFixture2.cards[index].image
+        );
       });
     });
 
