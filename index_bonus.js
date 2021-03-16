@@ -29,11 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const cards = myDeck.data.cards;
 
       for (let card of cards) {
-      
         const cardImage = document.createElement("img");
         cardImage.className = "card";
         cardImage.src = card.image;
-        showDeck.appendChild(cardImage)
+        console.log(cardImage);
+        showDeck.appendChild(cardImage);
 
         cardImage.addEventListener("click", (e) => replaceCard());
 
