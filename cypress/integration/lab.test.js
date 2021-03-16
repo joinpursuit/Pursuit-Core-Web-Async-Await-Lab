@@ -23,6 +23,8 @@ describe("Index", () => {
 
   it("shows five cards from the retrieved deck ID when the button is clicked", () => {
     visitWithFirstDeck();
+    
+    clickForDeck("cards1.json");
 
     clickForDeck("cards1.json");
 
