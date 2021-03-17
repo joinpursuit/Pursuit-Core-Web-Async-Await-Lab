@@ -22,20 +22,22 @@ createOptions();
 const getCards = async (event) => {
   let numCards = select.value;
   try {
-    const res = await axios.get(
-      `https://deckofcardsapi.com/api/deck/new/draw/?count=${numCards}`
-      );
-      const displayCards = document.querySelector("#display-cards");
-      const numOfCards = res.data.cards;
-      numOfCards.forEach(el => {
-        const img = document.createElement("img");
-        img.src = el.image;
-        displayCards.appendChild(img);
-      })
+    const res1 = await axios.get(`https://deckofcardsapi.com/api/deck/new/`);
+    const resId = res1.data.deck_id;
+    const res2 = await axios.get(
+      `https://deckofcardsapi.com/api/deck/${resId}/draw/?count=${numCards}`
+    );
 
-     const remaining = document.getElementById("remaining");
-     remaining.textContent = `${res.data.remaining} card(s) remaining`
-     debugger
+    const displayCards = document.querySelector("#display-cards");
+    const numOfCards = res.data.cards;
+    numOfCards.forEach((el) => {
+      const img = document.createElement("img");
+      img.src = el.image;
+      displayCards.appendChild(img);
+    });
+
+    const remaining = document.getElementById("remaining");
+    remaining.textContent = `${res.data.remaining} card(s) remaining`;
   } catch (err) {
     console.log(err);
   }
