@@ -22,7 +22,6 @@ event.preventDefault()
             return res.json()
         }).then (res =>{
             res.cards.forEach((card) => {
-                
                 const li = document.createElement("li");
                 li.innerHTML = "" 
                 ul.appendChild(li);
