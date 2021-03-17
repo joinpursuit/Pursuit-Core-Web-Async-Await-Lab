@@ -1,29 +1,35 @@
-// https://deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2
-// https://deckofcardsapi.com/api/deck/<<deck_id>>/shuffle/
-// https://deckofcardsapi.com/api/deck/new/
+
 
 document.addEventListener("DOMContentLoaded", async (e) => {
 	const deck = await axios.get("https://deckofcardsapi.com/api/deck/new/");
 	const deckId = deck.data.deck_id;
-	const cardsRemaining = deck.data.remaining;
+
+
+	const shuffle = async (deckId) => {
+		const res = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
+	}
+	shuffle(deckId);
 
 	const button = document.querySelector("#btn");
 	button.addEventListener("click", async (e) => {
 		const numOfCards = document.querySelector("#get-cards");
+		const cardPictures = document.querySelector("#card-pictures")
+		const p = document.querySelector("#remaining");
 		const num = Number(numOfCards.value);
+
 		const cards = await axios.get(
 			`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${num}`
 		);
-
+		p.textContent = `${cards.data.remaining} card(s) left`
+		debugger
+		cardPictures.innerHTML = "";
 		cards.data.cards.forEach((card) => {
 			const img = document.createElement("img");
 			img.src = card.image;
-
-			document.body.appendChild(img);
+			img.className = "card";
+			cardPictures.appendChild(img);
 		});
-		// image
-		// length
-		// remaining
-		// debugger;
+
 	});
 });
+
