@@ -3,9 +3,7 @@
 const select = document.querySelector("select");
 const cardUL = document.querySelector("ul");
 const form = document.querySelector("form");
-const cardSubmitButton = document.querySelector("#cardButton");
 const remaining = document.querySelector("#remaining");
-const cardDisplaySection = document.querySelector("#card-display-section");
 
 const cards = (num) => {
   for (let i = 1; i <= num; i++) {
@@ -17,9 +15,9 @@ const cards = (num) => {
 };
 cards(10);
 
-
 form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  try {
+    e.preventDefault();
 
   const numOfCards = Number(select.value);
   const res = await axios.get(
@@ -33,19 +31,18 @@ form.addEventListener("submit", async (e) => {
   const cards = res2.data.cards;
   cardUL.textContent = "";
 
-  
   cards.forEach((card) => {
     const cardImg = document.createElement("img");
     cardImg.src = card.image;
     cardImg.classList.add("card");
     const li = document.createElement("li");
-    
+
     cardUL.appendChild(li);
     li.appendChild(cardImg);
+  });
+
+  remaining.innerHTML = cardsRemaining;
+} catch (err) {
+    remaining.innerHTML = `Sorry there was an error.`
+}
 });
-
-remaining.innerHTML = cardsRemaining;
-
-});
-
-
