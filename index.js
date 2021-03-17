@@ -33,7 +33,9 @@ const getCards = async (event) => {
         displayCards.appendChild(img);
       })
 
-      debugger;
+     const remaining = document.getElementById("remaining");
+     remaining.textContent = `${res.data.remaining} card(s) remaining`
+     debugger
   } catch (err) {
     console.log(err);
   }
