@@ -1,0 +1,31 @@
+
+body {
+    background: green;
+  }
+  
+  div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background: rgb(6, 43, 6);
+    margin-top: 10px;
+
+  }
+  #count1{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background: rgb(6, 43, 6);
+    margin-top: 10px;
+  }
+  
+  image {
+    align-self: wrap;
+    
+  }
+  
+  .card:hover{
+      transition: all 1.5s;
+      transform: scale(1.3) 
+      
+  }
