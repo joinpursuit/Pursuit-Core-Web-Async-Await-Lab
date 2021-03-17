@@ -1,0 +1,14 @@
+body{
+    background-color: green;
+}
+
+#container{
+    background-color: darkgreen;
+}
+.card{
+    margin: 10px;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
