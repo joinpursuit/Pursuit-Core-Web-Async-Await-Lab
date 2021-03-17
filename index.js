@@ -4,24 +4,36 @@
 // - When the user clicks the button again, draws another set of cards from that same deck.
 // - Shows the user how many cards remain in the deck, and updates this number every time cards are drawn.
 
-const select = document.querySelector('#select-cards')
+const select = document.querySelector("#select-cards");
 
-const createOptions = (num)=>{
-    for(let i=1; i<= num; i++) {
-        const option = document.createElement('option')
-        option.textContent = i
-        select.appendChild(option)
+const createOptions = () => {
+  for (let i = 1; i <= 10; i++) {
+    const option = document.createElement("option");
+    option.textContent = i;
+    select.appendChild(option);
+    if (option.textContent === "5") {
+      option.id = "five";
+      document.getElementById("five").selected = "true";
     }
-}
-createOptions(10)
+  }
+};
+createOptions();
 
 const getCards = async (event) => {
- let numCards = select.value;
+  let numCards = select.value;
   try {
     const res = await axios.get(
       `https://deckofcardsapi.com/api/deck/new/draw/?count=${numCards}`
-    );
-    debugger;
+      );
+      const displayCards = document.querySelector("#display-cards");
+      const numOfCards = res.data.cards;
+      numOfCards.forEach(el => {
+        const img = document.createElement("img");
+        img.src = el.image;
+        displayCards.appendChild(img);
+      })
+
+      debugger;
   } catch (err) {
     console.log(err);
   }
