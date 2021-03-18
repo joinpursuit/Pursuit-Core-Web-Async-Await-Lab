@@ -19,7 +19,7 @@ createOptions(10);
 
 const newDeck = async () => {
   try {
-    const res = await axios.get("https://deckofcardsapi.com/api/deck/new/");
+    const res = await axios.get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
     deckID += res.data.deck_id;
     console.log(`res = ${res}`)
     console.log(`deckID = ${deckID}`)
@@ -30,7 +30,7 @@ const newDeck = async () => {
 
 window.addEventListener("load", (event) => {
     newDeck();
-    // debugger
+     
 });
 
 // const firstDeal = async () => {
@@ -54,7 +54,7 @@ window.addEventListener("load", (event) => {
 // firstDeal();
 
 const dealCards = async () => {
-  debugger;
+//   debugger;
   try {
     const res = await axios.get(
       `https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=${select.value}`
@@ -68,8 +68,10 @@ const dealCards = async () => {
       img.classList.add("card");
       img.src = card.image;
       li.appendChild(img);
+      debugger
     });
-    p.textContent = `${res.data.remaining} card(s) left`;
+    
+    p.textContent = `${res.data.remaining} card(s) left.`;
   } catch (err) {
     console.log(err);
   }
