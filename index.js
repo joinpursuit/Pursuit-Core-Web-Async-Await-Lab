@@ -10,28 +10,31 @@ const createOptions = (num) => {
 createOptions(10);
 
 const button = document.querySelector("button");
-
-// button.addEventListener("submit", (e) => {
-//   e.preventDefault();
-
 const showCards = async (e) => {
   const numOfCards = Number(e.target.value);
   try {
-    const res = await axios.get(
+    const res1 = await axios.get(`https://deckofcardsapi.com/api/deck/new/`);
+    const cardDeck = res1.data.deck_id;
+    const res2 = await axios.get(
+      `https://deckofcardsapi.com/api/${cardDeck}/draw/?count=${numOfCards}`
+    );
+    const remainingCards = res2.data.card.remaining;
+    const res3 = await axios.get(
       `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`
     );
-    const dogPics = document.querySelector("#dog-pics");
-    dogPics.innerHTML = "";
-    res.data.message.forEach((dogURL) => {
-      const img = document.createElement("img");
-      img.src = dogURL;
-      dogPics.appendChild(img);
-    });
+    const shuffleDeck = res3.data.card.shuffled;
+
+    //     const carsRemaining =
+    //     const  = document.querySelector("#dog-pics");
+    //     dogPics.innerHTML = "";
+    //     res.data.message.forEach((dogURL) => {
+    //       const img = document.createElement("img");
+    //       img.src = dogURL;
+    //       dogPics.appendChild(img);
+    // });
   } catch (err) {
     console.log(err);
   }
 };
 
-select.addEventListener("change", getAllDogs);
-
-// });
+select.addEventListener("change", showCards);
