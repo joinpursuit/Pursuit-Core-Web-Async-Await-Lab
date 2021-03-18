@@ -11,7 +11,6 @@ const createOptions = () => {
         option.selected = true;
     }
     option.textContent = i;
-    //option.value = i;  if we use the form button this assignment of the value separates the value from the event to get the #
     select.appendChild(option);
   }
 };
@@ -29,32 +28,11 @@ const newDeck = async () => {
 };
 
 window.addEventListener("load", (event) => {
-    newDeck();
-     
+    newDeck();   
 });
 
-// const firstDeal = async () => {
-//   try {
-//     const res = await axios.get(
-//       `https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=5`
-//     );
-//     res.data.cards.forEach((card) => {
-//         const li = document.createElement("li");
-//         li.innerHTML = "";
-//         ul.appendChild(li);
-//         const img = document.createElement("img");
-//         img.src = card.image;
-//         li.appendChild(img);
-//       });
-//     p.textContent = `${res.data.remaining} card(s) left`;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-// firstDeal();
 
 const dealCards = async () => {
-//   debugger;
   try {
     const res = await axios.get(
       `https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=${select.value}`
@@ -76,7 +54,7 @@ const dealCards = async () => {
     console.log(err);
   }
 };
-// dealCards();
+
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
