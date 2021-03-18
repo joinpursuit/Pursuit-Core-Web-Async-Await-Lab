@@ -24,7 +24,9 @@ describe("Index", () => {
   it("shows five cards from the retrieved deck ID when the button is clicked", () => {
     visitWithFirstDeck();
 
+    clickForDeck("cards1.json");
     cy.fixture("cards1.json").then((cardsFixture1) => {
+
       cy.get(".card")
         .should("have.length", 5)
         .each((card, index) => {
@@ -50,4 +52,5 @@ describe("Index", () => {
 
     cy.get("#remaining").should("have.text", "44 card(s) left.");
   });
+  
 });
