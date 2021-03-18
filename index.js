@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", event => {
             event.preventDefault()
 
-            let input = (document.querySelectorAll("option")[document.querySelector("select").selectedIndex].innerHTML)
+            let options = document.querySelectorAll("option")
+            let input = options[document.querySelector("select").selectedIndex].innerText
 
             const draw = async () => {
                 let res = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${input}`)
