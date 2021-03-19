@@ -12,17 +12,26 @@ createOptions(10);
 const button = document.querySelector("button");
 const showCards = async (e) => {
   const numOfCards = Number(e.target.value);
+  const section = document.querySelector("section");
   try {
-    const res1 = await axios.get(`https://deckofcardsapi.com/api/deck/new/`);
-    const cardDeck = res1.data.deck_id;
-    const res2 = await axios.get(
-      `https://deckofcardsapi.com/api/${cardDeck}/draw/?count=${numOfCards}`
+    const newDeck = await axios.get(`https://deckofcardsapi.com/api/deck/new/`);
+    const deckId = newDeck.data.deck_id;
+    const cards = await axios.get(
+      `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numOfCards}`
     );
+    cards.data.cards.forEach((card) => {
+      const img = document.createElement("img");
+      img.src = cards.image;
+      img.classList.add("card"); //gives class name
+      section.appendChild(img);
+    });
+    debugger;
     const remainingCards = res2.data.card.remaining;
+
     const res3 = await axios.get(
-      `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`
+      hh`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`
     );
-    const shuffleDeck = res3.data.card.shuffled;
+    // const shuffleDeck = res3.data.card.shuffled;
 
     //     const carsRemaining =
     //     const  = document.querySelector("#dog-pics");
