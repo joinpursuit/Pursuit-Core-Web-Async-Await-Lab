@@ -2,7 +2,7 @@ const selectBar = document.querySelector("#select-bar");
 const button = document.querySelector("button");
 let cardsLeft = document.querySelector("#remaining");
 let deckId;
-let remaining;
+
 
 const shuffleCards = async () => {
   try {
@@ -10,7 +10,7 @@ const shuffleCards = async () => {
       `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`
     );
     deckId = res.data.deck_id;
-    remaining = res.data.remaining;
+    
   } catch (err) {
     console.log(err);
   }
