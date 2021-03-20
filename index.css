@@ -1,0 +1,14 @@
+
+
+section {
+    background-color: green;
+}
+
+li {
+    list-style-type: none;
+    display: inline;
+}
+
+body {
+    background-color: forestgreen;
+}
