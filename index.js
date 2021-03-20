@@ -1,7 +1,19 @@
+const section = document.querySelector("#card-image");
 const button = document.querySelector("#draw-cards-bttn");
+
+const select = document.querySelector("select")
+const options = () =>{
+  for(let i=1; i<=10; i++){
+    const option= document.createElement("option")
+    option.textContent=i
+    option.value=i
+    select.appendChild(option)
+  }
+}
+options()
+select.selectedIndex="5"
+
 let deckData;
-
-
 const deckOfcards = async () => {
   try {
     const response = await axios.get(
@@ -19,21 +31,20 @@ const deckOfcards = async () => {
 const drawCards = async () => {
   try {
     let deckId = deckData.deck_id;
+    const numOfCards= Number(select.value)
     let response2 = await axios.get(
-      `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=5`
-    );
-    let cards = response2.data.cards;
-    let remaining = response2.data.remaining;
-    console.log(cards);
-    cards.forEach((card) => {
-      const img = document.createElement("img");
-      img.classList.add(".card");
-      img.src = card.image;
-      const section = document.querySelector("#card-image");
-      section.appendChild(img);
-      const p = document.querySelector("#remaining");
-      p.textContent = `Remaining Cards:  ${Number(remaining)}`;
-    });
+      `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numOfCards}`
+      );
+      section.innerHTML=""
+      response2.data.cards.forEach((card) => {
+        const remaining = response2.data.remaining;
+        const img = document.createElement("img");
+        img.classList.add("card");
+        img.src = card.image;
+        section.appendChild(img);
+        const p = document.querySelector("#remaining");
+        p.textContent = `${Number(remaining)} card(s) left.`;
+      });
 } catch (err) {
     console.log("The error that was thrown: ", err);
 }
@@ -43,12 +54,5 @@ const drawCards = async () => {
 
 
 
-button.addEventListener("click", (e) => {
-    e.preventDefault();
-    drawCards();
-    // let remaining = deckData.remaining
-    // const p = document.querySelector("#remaining");
-});
-
-
+button.addEventListener("click", drawCards);
 deckOfcards();
