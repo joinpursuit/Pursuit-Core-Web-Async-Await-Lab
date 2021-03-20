@@ -22,6 +22,8 @@ const createOptions = (num) => {
     option.textContent = i;
     option.value = i;
     select.appendChild(option);
+
+    debugger;
   }
 };
 
@@ -36,8 +38,9 @@ button.addEventListener("click", (e) => {
         `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=${numofCards}`
       );
       const showCards = document.querySelector("#show-cards");
-      showCards.innerText = ""
-      const card = drawCards.data.cards
+      showCards.innerText = "";
+      const card = drawCards.data.cards;
+      // debugger
       for (images of card) {
         // debugger;
         const cardImage = document.createElement("img");
