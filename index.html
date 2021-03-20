@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <head>
     <title>Async Await Lab</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./index.js" defer></script>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./index.js"></script>
+
+    <section>
+        <button type="submit">Get Cards!</button>
+        <select id="num-select" type="number"></select>
+    </section>
+
+    <section id="show-cards"></section>
+    
+    <p id="cards-left"></p>
+
 </body>
 </html>
