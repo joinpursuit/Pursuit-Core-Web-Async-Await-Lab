@@ -5,9 +5,10 @@ body{
     display:flex;
     flex-direction: row;
     background-color: darkgreen;
-    padding: 2px;
-    width: 100%;
+    margin: 2px;
+    width: 200%;
 }
 .card{
     margin: 10px;
+    width: 5%;
 }
