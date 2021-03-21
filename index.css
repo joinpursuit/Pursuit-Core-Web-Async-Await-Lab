@@ -1,0 +1,15 @@
+body{
+    background: green;
+}
+.card{
+    width: 100px;
+}
+.card:hover{
+    transform: scale(1.1);
+}
+#selected-cards{
+    background:darkgreen;
+}
+selected-cards{
+    background: darkgreen;
+}
