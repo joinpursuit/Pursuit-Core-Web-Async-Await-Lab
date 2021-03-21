@@ -1,0 +1,13 @@
+body{
+    background-color: green;
+}
+#showCardsBox{
+    display:flex;
+    flex-direction: row;
+    background-color: darkgreen;
+    padding: 2px;
+    width: 100%;
+}
+.card{
+    margin: 10px;
+}
