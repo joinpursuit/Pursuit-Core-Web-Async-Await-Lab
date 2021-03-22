@@ -1,21 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   let form = document.getElementById("form");
+  let id = await getId();
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    shuffle();
+    shuffle(id);
   });
 });
 
-const shuffle = async () => {
+const shuffle = async (id) => {
   let input = document.getElementById("input").value;
   let ul = document.getElementById("ul");
   let p = document.querySelector("#remaining");
   reset(ul);
   try {
-    let newDeck = await axios.get(
-      "https://deckofcardsapi.com/api/deck/new/draw/?count=1"
-    );
-    let id = newDeck.data.deck_id;
     let draw = await axios.get(
       `https://deckofcardsapi.com/api/deck/${id}/draw/?count=${input}`
     );
@@ -31,6 +28,11 @@ const shuffle = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+const getId = async () => {
+  let newDeck = await axios.get("https://deckofcardsapi.com/api/deck/new");
+  return newDeck.data.deck_id;
 };
 
 const reset = (parent) => {
