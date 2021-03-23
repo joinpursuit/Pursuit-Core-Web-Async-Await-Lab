@@ -13,6 +13,8 @@ createOptions(10);
 const button = document.querySelector('#get-cards-button');
 const remainingCardsDisplay = document.querySelector('#remaining');
 let deckID;
+let remainingCards;
+let cardImg;
 
 const getDeckID = async () => {
     const deckCount = await axios.get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`);
@@ -29,7 +31,7 @@ const getDeck = async () => {
         remainingCards = drawCard.data.remaining;
         cardDisplay.innerHTML = '';
         for(let i = 0; i < deckLength; i++){
-            const cardImg = document.createElement('img');
+            cardImg = document.createElement('img');
             cardImg.classList.add('card');
             cardImg.src = drawCard.data.cards[i].image;    
             cardDisplay.appendChild(cardImg);
@@ -41,3 +43,17 @@ const getDeck = async () => {
 }
 getDeckID();
 button.addEventListener('click', getDeck);
+
+const pickCard = async (e) => {
+    const drawNewCard = await axios.get(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`);
+    const deckLength2 = drawNewCard.data.cards.length;
+    remainingCards = drawNewCard.data.remaining;
+    const card = e.target;
+    for(let i = 0; i < deckLength2; i++){
+        card.src = drawNewCard.data.cards[i].image;
+        remainingCardsDisplay.textContent = `${remainingCards} card(s) left.`;
+    }
+    console.log(drawNewCard);
+    console.log(card)
+}
+cardDisplay.addEventListener('click', pickCard);

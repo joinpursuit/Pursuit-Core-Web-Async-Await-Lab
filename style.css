@@ -1,0 +1,11 @@
+body {
+    background-color: green;
+}
+
+#card-display {
+    background-color: darkgreen;
+    padding: 10px;
+}
+.card {
+    padding: 10px;
+}
