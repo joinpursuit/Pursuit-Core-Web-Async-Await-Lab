@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Async Await Lab</title>
-</head>
-<body>
-    <h1>Hello World</h1>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
+    <style>
+        body {
+            background-color: green;
+        }
+        .table {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+    <form id="form">
+    <button type="submit">Get Cards</button>
+    <select id="input">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option selected>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+    </select>
+</form>
+<div class="table">
+    <ul id="ul"></ul>
+</div>
+<p id="remaining"></p>
+</div>
 </body>
 </html>
