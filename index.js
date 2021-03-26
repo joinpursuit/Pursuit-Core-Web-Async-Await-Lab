@@ -11,7 +11,8 @@ const shuffle = async (id) => {
   let input = document.getElementById("input").value;
   let ul = document.getElementById("ul");
   let p = document.querySelector("#remaining");
-  reset(ul);
+  ul.innerHTML = "";
+  console.log(input);
   try {
     let draw = await axios.get(
       `https://deckofcardsapi.com/api/deck/${id}/draw/?count=${input}`
