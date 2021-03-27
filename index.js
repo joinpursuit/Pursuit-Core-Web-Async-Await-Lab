@@ -10,7 +10,7 @@ const newDeck = async () => {
       "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
     );
     deckId = newCards.data.deck_id;
-    // debugger
+    //  debuggerwww
   } catch (error) {
     console.log(error);
   }
@@ -37,11 +37,11 @@ button.addEventListener("click", (e) => {
       );
       const showCards = document.querySelector("#show-cards");
       showCards.innerText = ""
-      const card = drawCards.data.cards
-      for (images of card) {
+      const deck = drawCards.data.cards
+      for (card of deck) {
         // debugger;
         const cardImage = document.createElement("img");
-        cardImage.src = images.image;
+        cardImage.src = card.image;
         showCards.appendChild(cardImage);
       }
     } catch (error) {
