@@ -1,0 +1,10 @@
+body{
+    background-color: limegreen;
+}
+#show-cards{
+    background-color: green;
+    margin: 10px;
+}
+section > img:hover{
+    transform: scale(1.1);
+}
