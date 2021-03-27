@@ -24,7 +24,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
         img.className = "card";
         img.src = card.image;
         div.appendChild(img);
+        img.addEventListener("click", singleCard);
+
+        async function singleCard(joker) {
+          const result = await axios.get(
+            `https://deckofcardsapi.com/api/deck/${cardsId}/draw/?count=1`
+          );
+          joker.target.src = result.data.cards[0].image;
+          cardsLeft.textContent = result.data.remaining;
+        }
       }
+
       const cardsLeft = document.querySelector("#card-left");
       cardsLeft.textContent = result.data.remaining;
     }

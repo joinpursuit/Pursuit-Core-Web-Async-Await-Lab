@@ -1,0 +1,29 @@
+body{
+    background: green;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+div{
+    background-color: darkgreen;
+}
+
+.card {
+    margin: 10px;
+}
+
+.card:hover {
+    transform: scale(1, 1.1)
+} 
+
+
+
+
+
+
+
+
+
+
