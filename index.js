@@ -24,18 +24,19 @@ async function cardGenerator(){
             button.addEventListener("click", displayCards)
             async function displayCards() { 
                 let drawCards = await axios.get(`https://deckofcardsapi.com/api/deck/${uniqueDeck}/draw/?count=${option.value}`)
-                let selectedCards = drawCards.data
+                let selectedCards = drawCards.data.cards
+                let selectedCardsNum = drawCards.data.remaining
 
                 cardContainer.innerHTML = ""
-
-                for (let card of selectedCards.cards) {
+                selectedCards.forEach(card => {
+               
                     let image = document.createElement("img")
                     image.classList.add("card")
                     image.src = card.image
                     cardContainer.appendChild(image)
-                  
-                }
-                  cardNum.innerText = `${selectedCards.remaining} card(s) left.`
+                })
+                
+                  cardNum.innerText = `${selectedCardsNum} card(s) left.`
             }
         
     } catch (err) { 
