@@ -1,0 +1,19 @@
+body {
+    background-color: green;
+}
+
+#display {
+    background-color: darkgreen;
+}
+
+#card-display {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px; 
+}
+
+#card-display img:hover {
+    transform: scale(1.1);
+}
