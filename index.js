@@ -70,7 +70,7 @@ const dealCards = async () => {
       li.appendChild(img);
       debugger
     });
-    
+    debugger
     p.textContent = `${res.data.remaining} card(s) left.`;
   } catch (err) {
     console.log(err);
