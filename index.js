@@ -25,34 +25,40 @@
 
 
 const grabDeck = async () => {
-    let grab = await axios.get(
+    return axios.get(
         'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
         .then(
-            (deck) => {
+            (deck) => {            
                 let deckId = deck.data.deck_id
                 let remainder = deck.data.remaining
+                console.log(deckId)
                 console.log(deck)
-                return deckId
-            }
-        )
-    
+                // return deckId
+                return deck.data
+            })
+            .catch((err)=> console.log(err))    
+ 
 }
 
 grabDeck()
 
-const drawCard = (count) => {
-    axios.get(
-        'https://deckofcardsapi.com/api/deck/cmt8qln2qa8t/draw/?count=5')
-        .then(
-            (response) => {
-                console.log(response.data.cards)
-                const cards = response.data.cards
 
-            }
-        )
-}
+// let deckId = grabDeck()
+// console.log(deckId)
+// const drawCard = (count) => {
+//     axios.get(
+//         `https://deckofcardsapi.com/api/deck/${deck_Id}/draw/?count=5`)
+//         .then(
+//             (response) => {
+//                 console.log(response.data.cards)
+//                 const cards = response.data.cards
 
-drawCard()
+//             }
+//     )
+//     .catch((err)=>console.log())
+// }
+
+// drawCard()
 
 
 
