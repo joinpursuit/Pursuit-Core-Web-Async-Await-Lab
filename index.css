@@ -1,0 +1,14 @@
+body {
+    background-color: #157202
+}
+
+.card {
+    background-color: #0D5702;
+    padding: 10%;
+    margin-right: 30px;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+}
